@@ -56,12 +56,44 @@
 			children = (
 				C159E90A298F827200D777C3 /* AppDelegate.swift */,
 				C159E90C298F827200D777C3 /* SceneDelegate.swift */,
-				C159E90E298F827200D777C3 /* ViewController.swift */,
-				C159E913298F827300D777C3 /* Assets.xcassets */,
-				C159E915298F827300D777C3 /* LaunchScreen.storyboard */,
 				C159E918298F827300D777C3 /* Info.plist */,
+				C159E91E298FA35400D777C3 /* Resource */,
+				C159E91F298FA35F00D777C3 /* Scene */,
+				C159E90E298F827200D777C3 /* ViewController.swift */,
 			);
 			path = PhotoAlbum;
+			sourceTree = "<group>";
+		};
+		C159E91E298FA35400D777C3 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C159E920298FA4FC00D777C3 /* Asset */,
+				C159E921298FA51700D777C3 /* Storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		C159E91F298FA35F00D777C3 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		C159E920298FA4FC00D777C3 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				C159E913298F827300D777C3 /* Assets.xcassets */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+		C159E921298FA51700D777C3 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C159E915298F827300D777C3 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
