@@ -16,6 +16,7 @@ final class AlbumListViewController: BaseViewController {
         view.rowHeight = 85
         view.separatorColor = Colors.white.color
         view.dataSource = self
+        view.delegate = self
         view.register(AlbumListTableViewCell.self, forCellReuseIdentifier: AlbumListTableViewCell.reuseIdentifier)
         return view
     }()
@@ -36,7 +37,7 @@ final class AlbumListViewController: BaseViewController {
     }
 }
 
-extension AlbumListViewController: UITableViewDataSource {
+extension AlbumListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         Section.allCases.count
     }
@@ -62,5 +63,9 @@ extension AlbumListViewController: UITableViewDataSource {
         cell.bindData(viewModel.data)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        Section(rawValue: section)?.header
     }
 }
