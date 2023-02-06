@@ -9,8 +9,6 @@ import UIKit
 
 final class AlbumListTableViewCell: BaseTableViewCell {
     
-    private let emptyView = UIImage(systemName: TextCase.AlbumList.emptyView.rawValue)
-    
     private let thumbnailView: UIImageView = {
         let view = UIImageView()
         view.tintColor = Colors.gray.color
@@ -22,6 +20,14 @@ final class AlbumListTableViewCell: BaseTableViewCell {
     
     private let countLabel = AlbumListLabel(size: 12)
     
+    private let nextPage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: Images.AlbumList.arrow.rawValue)
+        view.tintColor = Colors.black.color
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         thumbnailView.image = nil
@@ -30,7 +36,7 @@ final class AlbumListTableViewCell: BaseTableViewCell {
     }
     
     override func configure() {
-        [thumbnailView, titleLabel, countLabel].forEach{ contentView.addSubview($0) }
+        [thumbnailView, titleLabel, countLabel, nextPage].forEach{ contentView.addSubview($0) }
     }
     
     override func setConstraints() {
@@ -49,10 +55,15 @@ final class AlbumListTableViewCell: BaseTableViewCell {
             $0.leading.equalTo(thumbnailView.snp.trailing).offset(16)
             $0.top.equalTo(titleLabel.snp.bottom).offset(8)
         }
+        
+        nextPage.snp.makeConstraints {
+            $0.centerY.equalTo(safeAreaLayoutGuide)
+            $0.trailing.equalTo(safeAreaLayoutGuide).inset(20)
+        }
     }
     
     func bindData(_ data:AlbumListDataModel?) {
-        thumbnailView.image = data?.count == TextCase.AlbumList.empty.rawValue ? emptyView : data?.thumbnail
+        thumbnailView.image = data?.count == TextCase.AlbumList.empty.rawValue ? UIImage(systemName: Images.AlbumList.empty.rawValue) : data?.thumbnail
         titleLabel.text = data?.title
         countLabel.text = data?.count
     }
