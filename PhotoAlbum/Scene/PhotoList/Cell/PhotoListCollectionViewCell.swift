@@ -11,6 +11,11 @@ final class PhotoListCollectionViewCell: BaseCollectionViewCell {
     
     private let photoImage = PhotoImageView(type: .photo)
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photoImage.image = nil
+    }
+    
     override func configure() {
         contentView.addSubview(photoImage)
     }
