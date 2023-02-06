@@ -11,6 +11,8 @@
 		C113281E29910ABE0069FFA4 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C113281D29910ABE0069FFA4 /* UIViewController+.swift */; };
 		C113282229910E4B0069FFA4 /* PhotoListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C113282129910E4B0069FFA4 /* PhotoListCollectionViewCell.swift */; };
 		C113282429910F1C0069FFA4 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C113282329910F1C0069FFA4 /* BaseCollectionViewCell.swift */; };
+		C1132826299110ED0069FFA4 /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1132825299110ED0069FFA4 /* PhotoImageView.swift */; };
+		C11328282991115E0069FFA4 /* ImageViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11328272991115E0069FFA4 /* ImageViewType.swift */; };
 		C159E90B298F827200D777C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C159E90A298F827200D777C3 /* AppDelegate.swift */; };
 		C159E90D298F827200D777C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C159E90C298F827200D777C3 /* SceneDelegate.swift */; };
 		C159E914298F827300D777C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C159E913298F827300D777C3 /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 		C113281D29910ABE0069FFA4 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C113282129910E4B0069FFA4 /* PhotoListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListCollectionViewCell.swift; sourceTree = "<group>"; };
 		C113282329910F1C0069FFA4 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		C1132825299110ED0069FFA4 /* PhotoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageView.swift; sourceTree = "<group>"; };
+		C11328272991115E0069FFA4 /* ImageViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewType.swift; sourceTree = "<group>"; };
 		C159E907298F827200D777C3 /* PhotoAlbum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoAlbum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C159E90A298F827200D777C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C159E90C298F827200D777C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				C159E9462990C03600D777C3 /* AlbumListLabel.swift */,
+				C1132825299110ED0069FFA4 /* PhotoImageView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -259,6 +264,7 @@
 			children = (
 				C159E9512990DFF400D777C3 /* TextCase.swift */,
 				C159E9532990E5A300D777C3 /* Section.swift */,
+				C11328272991115E0069FFA4 /* ImageViewType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 			files = (
 				C159E92B298FDD2000D777C3 /* AlbumListViewController.swift in Sources */,
 				C159E93229900A2700D777C3 /* Colors.swift in Sources */,
+				C11328282991115E0069FFA4 /* ImageViewType.swift in Sources */,
 				C159E9522990DFF400D777C3 /* TextCase.swift in Sources */,
 				C159E90B298F827200D777C3 /* AppDelegate.swift in Sources */,
 				C159E93C2990BE0800D777C3 /* BaseTableViewCell.swift in Sources */,
@@ -373,6 +380,7 @@
 				C113281C2991073A0069FFA4 /* Images.swift in Sources */,
 				C113282229910E4B0069FFA4 /* PhotoListCollectionViewCell.swift in Sources */,
 				C159E9542990E5A300D777C3 /* Section.swift in Sources */,
+				C1132826299110ED0069FFA4 /* PhotoImageView.swift in Sources */,
 				C159E9472990C03600D777C3 /* AlbumListLabel.swift in Sources */,
 				C113282429910F1C0069FFA4 /* BaseCollectionViewCell.swift in Sources */,
 				C113281E29910ABE0069FFA4 /* UIViewController+.swift in Sources */,
