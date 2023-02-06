@@ -9,24 +9,13 @@ import UIKit
 
 final class AlbumListTableViewCell: BaseTableViewCell {
     
-    private let thumbnailView: UIImageView = {
-        let view = UIImageView()
-        view.tintColor = Colors.gray.color
-        view.contentMode = .scaleToFill
-        return view
-    }()
+    private let thumbnailView = PhotoImageView(color: Colors.gray.color, type: .photo)
     
     private let titleLabel = AlbumListLabel(size: 17)
     
     private let countLabel = AlbumListLabel(size: 12)
     
-    private let nextPage: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(systemName: Images.AlbumList.arrow.rawValue)
-        view.tintColor = Colors.black.color
-        view.contentMode = .scaleAspectFit
-        return view
-    }()
+    private let nextPage = PhotoImageView(name: Images.AlbumList.arrow.rawValue, color: Colors.black.color, type: .album)
     
     override func prepareForReuse() {
         super.prepareForReuse()

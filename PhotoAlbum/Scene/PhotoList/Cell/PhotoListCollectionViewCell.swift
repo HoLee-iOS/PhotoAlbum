@@ -7,11 +7,18 @@
 
 import UIKit
 
-import SnapKit
-
-class PhotoListCollectionViewCell: BaseCollectionViewCell {
+final class PhotoListCollectionViewCell: BaseCollectionViewCell {
     
+    private let photoImage = PhotoImageView(type: .photo)
     
+    override func configure() {
+        contentView.addSubview(photoImage)
+    }
     
+    override func setConstraints() {
+        photoImage.snp.makeConstraints {
+            $0.edges.equalTo(safeAreaLayoutGuide)
+        }
+    }
 }
 
