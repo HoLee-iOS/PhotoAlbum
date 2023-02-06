@@ -9,8 +9,11 @@ import UIKit
 
 final class AlbumListTableViewCell: BaseTableViewCell {
     
+    private let emptyView = UIImage(systemName: TextCase.AlbumList.emptyView.rawValue)
+    
     private let thumbnailView: UIImageView = {
         let view = UIImageView()
+        view.tintColor = Colors.gray.color
         view.contentMode = .scaleToFill
         return view
     }()
@@ -49,7 +52,7 @@ final class AlbumListTableViewCell: BaseTableViewCell {
     }
     
     func bindData(_ data:AlbumListDataModel?) {
-        thumbnailView.image = data?.thumbnail
+        thumbnailView.image = data?.count == TextCase.AlbumList.empty.rawValue ? emptyView : data?.thumbnail
         titleLabel.text = data?.title
         countLabel.text = data?.count
     }

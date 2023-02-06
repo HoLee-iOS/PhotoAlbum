@@ -9,6 +9,8 @@ import Foundation
 
 enum TextCase {
     enum AlbumList: String {
+        case empty = "0"
+        case emptyView = "photo.on.rectangle.angled"
         case navigationTitle = "앨범"
     }
 }
