@@ -8,13 +8,13 @@
 import Foundation
 
 enum Section: Int, CaseIterable {
-    case userAlbums
     case smartAlbums
+    case userAlbums
     
     var header: String {
         switch self {
-        case .userAlbums: return "사용자 앨범"
         case .smartAlbums: return "스마트 앨범"
+        case .userAlbums: return "사용자 앨범"
         }
     }
 }
