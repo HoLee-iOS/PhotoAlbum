@@ -39,6 +39,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     UIApplication.shared.open(appSetting)
                 }
             }
+            let cancel = UIAlertAction(title: TextCase.Authorization.quit.rawValue, style: .destructive) { _ in
+                UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+                DispatchQueue.main.async {
+                    exit(0)
+                }
+            }
+            requestAlert.addAction(cancel)
             requestAlert.addAction(goSetting)
             self.window?.rootViewController?.present(requestAlert, animated: true)
         }

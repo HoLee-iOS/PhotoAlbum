@@ -24,12 +24,19 @@ class BaseViewController: UIViewController {
     func setConstraints() { }
     
     //MARK: - Alert 생성
-    func showAlert(title:String, message:String, response:String, completion: (() -> Void)? = nil) {
+    func showAlert(type:AlertType = .one, title:String, message:String, response:String, completion: (() -> Void)? = nil) {
         let requestAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let goSetting = UIAlertAction(title: response, style: .default) { _ in
+        let ok = UIAlertAction(title: response, style: .default) { _ in
             completion?()
         }
-        requestAlert.addAction(goSetting)
+        let cancel = UIAlertAction(title: TextCase.Authorization.quit.rawValue, style: .destructive) { _ in
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+            DispatchQueue.main.async {
+                exit(0)
+            }
+        }
+        if type == .two { requestAlert.addAction(cancel) }
+        requestAlert.addAction(ok)
         transition(requestAlert, transitionStyle: .present)
     }
 }
