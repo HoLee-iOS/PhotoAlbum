@@ -20,6 +20,7 @@ final class LaunchViewController: BaseViewController {
         requestAuthorization(accessLevel)
     }
     
+    
     private func requestAuthorization(_ accessLevel:PHAccessLevel) {
         PHPhotoLibrary.requestAuthorization(for: accessLevel) { [weak self] authorizationStatus in
             switch authorizationStatus {
