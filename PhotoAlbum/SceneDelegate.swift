@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import Photos
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        //MARK: - 네비게이션 아이템 색상 설정
+        UINavigationBar.appearance().tintColor = Colors.black.color
+        
+        //MARK: - 초기화면 설정
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         window?.rootViewController = LaunchViewController()
@@ -29,8 +31,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        //MARK: - 권한 설정 변경 없이 화면으로 돌아갔을때 권한 확인 후 다시 Alert Present
+        if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .denied {
+            let requestAlert = UIAlertController(title: TextCase.Authorization.title.rawValue, message: TextCase.Authorization.message.rawValue, preferredStyle: .alert)
+            let goSetting = UIAlertAction(title: TextCase.Authorization.response.rawValue, style: .default) { _ in
+                if let appSetting = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(appSetting)
+                }
+            }
+            requestAlert.addAction(goSetting)
+            self.window?.rootViewController?.present(requestAlert, animated: true)
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
