@@ -13,7 +13,7 @@ final class PhotoImageView: UIImageView {
         super.init(frame: frame)
     }
     
-    convenience init(name:String? = nil, color:UIColor? = nil,  type:ImageViewType) {
+    convenience init(name:String? = nil, color:UIColor? = nil, type:ImageViewType) {
         self.init(frame: .zero)
         configure(name: name, color: color, type: type)
     }

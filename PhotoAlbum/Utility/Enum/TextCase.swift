@@ -15,6 +15,7 @@ enum TextCase: String {
         case title = "사진정보 이용"
         case message = "사진의 상세데이터를 제공을 위해 사진 접근에 대한 권한을 허용해야만 앱을 사용하실 수 있습니다."
         case response = "설정으로 이동"
+        case quit = "종료"
     }
     
     enum AddAlert: String {
