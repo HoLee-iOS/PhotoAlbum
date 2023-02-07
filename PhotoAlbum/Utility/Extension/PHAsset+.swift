@@ -11,11 +11,12 @@ import Photos
 extension PHAsset {
     func convertImage() -> UIImage? {
         var thumbnail: UIImage?
+        let options = PHImageRequestOptions()
         PHImageManager.default().requestImage(for: self,
-                             targetSize: CGSize(width: self.pixelWidth, height: self.pixelHeight),
-                             contentMode: .aspectFit,
-                             options: PHImageRequestOptions(),
-                             resultHandler: {(result, info) -> Void in
+                                              targetSize: CGSize(width: self.pixelWidth, height: self.pixelHeight),
+                                              contentMode: .aspectFit,
+                                              options: options,
+                                              resultHandler: {(result, info) -> Void in
             thumbnail = result
         })
         return thumbnail
