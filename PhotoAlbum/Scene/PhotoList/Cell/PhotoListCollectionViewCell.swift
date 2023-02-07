@@ -9,7 +9,7 @@ import UIKit
 
 final class PhotoListCollectionViewCell: BaseCollectionViewCell {
     
-    let photoImage = PhotoImageView(type: .photo)
+    private let photoImage = PhotoImageView(type: .photo)
     
     override func prepareForReuse() {
         super.prepareForReuse()

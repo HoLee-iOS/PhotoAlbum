@@ -11,16 +11,16 @@ import Photos
 class AlbumListViewModel {
     
     var data: AlbumListDataModel?
-    var userAlbums: PHFetchResult<PHAssetCollection>!
     var smartAlbums: PHFetchResult<PHAssetCollection>!
+    var userAlbums: PHFetchResult<PHAssetCollection>!
     
     init() {
-        userAlbums = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
         smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
+        userAlbums = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
     }
     
     func configure(type: Section, indexPath:Int) {
-        let collection = type.rawValue == 0 ? userAlbums.object(at: indexPath) : smartAlbums.object(at: indexPath)
+        let collection = type.rawValue == 0 ? smartAlbums.object(at: indexPath) : userAlbums.object(at: indexPath)
         let option = PHFetchOptions()
         option.sortDescriptors = [NSSortDescriptor(key: TextCase.option.rawValue, ascending: false)]
         let fetchAssets = PHAsset.fetchAssets(in: collection, options: option)

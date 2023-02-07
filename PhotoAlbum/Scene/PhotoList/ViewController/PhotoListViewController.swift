@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-final class PhotoListViewController: BaseViewController {
+final class PhotoListViewController: BaseViewController, PHPhotoLibraryChangeObserver {
     
     var album: PHAssetCollection?
     
@@ -22,18 +22,38 @@ final class PhotoListViewController: BaseViewController {
         return view
     }()
     
+    private let emptyLabel = AlbumListLabel(size: 20, width: .semibold, content: TextCase.PhotoList.empty.rawValue)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        isEmptyAlbum()
+        PHPhotoLibrary.shared().register(self)
+    }
+    
+    func isEmptyAlbum() {
+        viewModel.photos.count == 0 ? (collectionView.isHidden = true) : (emptyLabel.isHidden = true)
+    }
+    
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        viewModel = PhotoListViewModel(album)
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     override func configure() {
         navigationItem.title = album?.localizedTitle
-        view.addSubview(collectionView)
+        [collectionView, emptyLabel].forEach { view.addSubview($0) }
     }
     
     override func setConstraints() {
         collectionView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        emptyLabel.snp.makeConstraints {
+            $0.center.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -57,13 +77,6 @@ final class PhotoListViewController: BaseViewController {
             return section
         }
     }
-    
-    private func showAlert(_ data: PhotoListDataModel) -> UIAlertController {
-        let alert = UIAlertController(title: TextCase.Alert.title.rawValue, message: TextCase.Alert.fileName.rawValue + data.title! + TextCase.Alert.fileSize.rawValue + data.size, preferredStyle: .alert)
-        let ok = UIAlertAction(title: TextCase.Alert.ok.rawValue, style: .default)
-        alert.addAction(ok)
-        return alert
-    }
 }
 
 extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -82,6 +95,6 @@ extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let data = viewModel.configure(indexPath.item) else { return }
-        transition(showAlert(data), transitionStyle: .present)
+        showAlert(title: TextCase.DetailAlert.title.rawValue, message: TextCase.DetailAlert.fileName.rawValue + data.title + TextCase.DetailAlert.fileSize.rawValue + data.size, response: TextCase.DetailAlert.response.rawValue)
     }
 }
