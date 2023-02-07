@@ -17,6 +17,7 @@ final class AlbumListTableViewCell: BaseTableViewCell {
     
     private let nextPage = PhotoImageView(name: Images.AlbumList.arrow.rawValue, color: Colors.black.color, type: .album)
     
+    //MARK: - 재사용 에러를 방지하기 위한 초기값 설정
     override func prepareForReuse() {
         super.prepareForReuse()
         thumbnailView.image = nil

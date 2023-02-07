@@ -27,6 +27,7 @@ final class AlbumListViewController: BaseViewController, PHPhotoLibraryChangeObs
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //MARK: - 권한 거부 했을 경우 권한 변경을 유도하는 Alert Present
         if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .denied {
             showAlert(title: TextCase.Authorization.title.rawValue, message: TextCase.Authorization.message.rawValue, response: TextCase.Authorization.response.rawValue) {
                 if let appSetting = URL(string: UIApplication.openSettingsURLString) {
@@ -35,9 +36,11 @@ final class AlbumListViewController: BaseViewController, PHPhotoLibraryChangeObs
             }
         }
         
+        //MARK: - 변경사항 감지하는 Observer에 화면 등록
         PHPhotoLibrary.shared().register(self)
     }
     
+    //MARK: - 변경사항 발생 시에 실행
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         viewModel = AlbumListViewModel()
         DispatchQueue.main.async { [weak self] in

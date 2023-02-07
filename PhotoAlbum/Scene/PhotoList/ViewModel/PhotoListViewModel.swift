@@ -15,6 +15,7 @@ final class PhotoListViewModel {
     
     init(_ album:PHAssetCollection?) {
         let option = PHFetchOptions()
+        //MARK: - 최근 이미지 순 정렬
         option.sortDescriptors = [NSSortDescriptor(key: TextCase.option.rawValue, ascending: false)]
         photos = PHAsset.fetchAssets(in: album ?? PHAssetCollection(), options: option)
     }

@@ -9,6 +9,8 @@ import UIKit
 import Photos
 
 extension PHAsset {
+    
+    //MARK: - PHAsset을 UIImage로 변환
     func convertImage() -> UIImage? {
         var thumbnail: UIImage?
         let options = PHImageRequestOptions()

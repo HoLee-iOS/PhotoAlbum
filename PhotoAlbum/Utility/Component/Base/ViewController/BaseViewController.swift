@@ -23,6 +23,7 @@ class BaseViewController: UIViewController {
     
     func setConstraints() { }
     
+    //MARK: - Alert 생성
     func showAlert(title:String, message:String, response:String, completion: (() -> Void)? = nil) {
         let requestAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let goSetting = UIAlertAction(title: response, style: .default) { _ in

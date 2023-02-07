@@ -14,6 +14,7 @@ extension UIViewController {
         case push
     }
     
+    //MARK: - 화면 전환
     func transition(_ vc: UIViewController, transitionStyle: TransitionStyle) {
         switch transitionStyle {
         case .present:

@@ -28,13 +28,16 @@ final class PhotoListViewController: BaseViewController, PHPhotoLibraryChangeObs
         super.viewDidLoad()
         
         isEmptyAlbum()
+        //MARK: - 변경사항 감지하는 Observer에 화면 등록
         PHPhotoLibrary.shared().register(self)
     }
     
+    //MARK: - 사진 개수가 없을 경우 emptyLabel 표시
     func isEmptyAlbum() {
         viewModel.photos.count == 0 ? (collectionView.isHidden = true) : (emptyLabel.isHidden = true)
     }
     
+    //MARK: - 변경사항 발생 시에 실행
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         viewModel = PhotoListViewModel(album)
         DispatchQueue.main.async { [weak self] in

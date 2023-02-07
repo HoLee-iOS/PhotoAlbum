@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - 화면 reuseIdentifier
 protocol ReusableViewProtocol: AnyObject {
     static var reuseIdentifier: String { get }
 }
