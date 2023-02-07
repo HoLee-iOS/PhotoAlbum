@@ -9,7 +9,7 @@ import UIKit
 
 final class PhotoListCollectionViewCell: BaseCollectionViewCell {
     
-    private let photoImage = PhotoImageView(type: .photo)
+    let photoImage = PhotoImageView(type: .photo)
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -24,6 +24,10 @@ final class PhotoListCollectionViewCell: BaseCollectionViewCell {
         photoImage.snp.makeConstraints {
             $0.edges.equalTo(safeAreaLayoutGuide)
         }
+    }
+    
+    func bindData(_ data:PhotoListDataModel?) {
+        photoImage.image = data?.photo
     }
 }
 
