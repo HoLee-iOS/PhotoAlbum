@@ -22,4 +22,13 @@ class BaseViewController: UIViewController {
     func configure() { }
     
     func setConstraints() { }
+    
+    func showAlert(title:String, message:String, response:String, completion: (() -> Void)? = nil) {
+        let requestAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let goSetting = UIAlertAction(title: response, style: .default) { _ in
+            completion?()
+        }
+        requestAlert.addAction(goSetting)
+        transition(requestAlert, transitionStyle: .present)
+    }
 }
