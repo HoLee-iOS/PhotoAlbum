@@ -12,6 +12,7 @@ extension PHAsset {
     func convertImage() -> UIImage? {
         var thumbnail: UIImage?
         let options = PHImageRequestOptions()
+        options.isSynchronous = true
         PHImageManager.default().requestImage(for: self,
                                               targetSize: CGSize(width: self.pixelWidth, height: self.pixelHeight),
                                               contentMode: .aspectFit,
