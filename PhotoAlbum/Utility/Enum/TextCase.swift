@@ -20,7 +20,7 @@ enum TextCase: String {
     
     enum AddAlert: String {
         case title = ""
-        case message = "이미 모든 사진에 대한 정보가 있습니다."
+        case message = "모든 사진에 대한 접근 허용으로 모든 사진의 정보가 있습니다."
         case response = "확인"
     }
     
