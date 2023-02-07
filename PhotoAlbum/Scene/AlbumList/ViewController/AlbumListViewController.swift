@@ -26,6 +26,9 @@ final class AlbumListViewController: BaseViewController {
     }
     
     override func configure() {
+        let backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: nil)
+        navigationItem.backBarButtonItem = backBarButtonItem
+        navigationItem.backBarButtonItem?.tintColor = Colors.black.color
         navigationItem.title = TextCase.AlbumList.navigationTitle.rawValue
         view.addSubview(tableView)
     }
@@ -67,5 +70,12 @@ extension AlbumListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         Section(rawValue: section)?.header
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let vc = PhotoListViewController()
+        vc.album = indexPath.section == 0 ? viewModel.userAlbums.object(at: indexPath.row) : viewModel.smartAlbums.object(at: indexPath.row)
+        transition(vc, transitionStyle: .push)
     }
 }
