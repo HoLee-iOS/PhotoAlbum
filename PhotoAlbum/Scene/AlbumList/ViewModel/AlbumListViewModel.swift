@@ -21,7 +21,9 @@ class AlbumListViewModel {
     
     func configure(type: Section, indexPath:Int) {
         let collection = type.rawValue == 0 ? userAlbums.object(at: indexPath) : smartAlbums.object(at: indexPath)
-        let fetchAssets = PHAsset.fetchAssets(in: collection, options: nil)
+        let option = PHFetchOptions()
+        option.sortDescriptors = [NSSortDescriptor(key: TextCase.option.rawValue, ascending: false)]
+        let fetchAssets = PHAsset.fetchAssets(in: collection, options: option)
         data = AlbumListDataModel(thumbnail: fetchAssets.firstObject?.convertImage(), title: collection.localizedTitle, count: fetchAssets.count)
     }
 }
