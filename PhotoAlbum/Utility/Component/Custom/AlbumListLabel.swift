@@ -13,17 +13,18 @@ final class AlbumListLabel: UILabel {
         super.init(frame: frame)
     }
     
-    convenience init(size: CGFloat) {
+    convenience init(size: CGFloat, width: UIFont.Weight = .regular, content: String = "") {
         self.init(frame: .zero)
-        configure(size: size)
+        configure(size: size, width: width, content: content)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(size: CGFloat) {
+    func configure(size: CGFloat, width: UIFont.Weight, content: String) {
+        text = content
         textColor = Colors.black.color
-        font = .systemFont(ofSize: size, weight: .regular)
+        font = .systemFont(ofSize: size, weight: width)
     }
 }
