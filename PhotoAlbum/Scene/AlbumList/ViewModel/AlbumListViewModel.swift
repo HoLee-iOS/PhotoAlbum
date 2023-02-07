@@ -11,8 +11,8 @@ import Photos
 class AlbumListViewModel {
     
     var data: AlbumListDataModel?
-    var smartAlbums: PHFetchResult<PHAssetCollection>!
-    var userAlbums: PHFetchResult<PHAssetCollection>!
+    var smartAlbums: PHFetchResult<PHAssetCollection>
+    var userAlbums: PHFetchResult<PHAssetCollection>
     
     init() {
         smartAlbums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: nil)
