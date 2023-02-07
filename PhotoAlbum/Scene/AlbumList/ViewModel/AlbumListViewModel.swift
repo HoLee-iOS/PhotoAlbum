@@ -25,6 +25,6 @@ class AlbumListViewModel {
         //MARK: - 최근 이미지 순 정렬
         option.sortDescriptors = [NSSortDescriptor(key: TextCase.option.rawValue, ascending: false)]
         let fetchAssets = PHAsset.fetchAssets(in: collection, options: option)
-        data = AlbumListDataModel(thumbnail: fetchAssets.firstObject?.convertImage(), title: collection.localizedTitle, count: fetchAssets.count)
+        data = AlbumListDataModel(thumbnail: fetchAssets.firstObject, title: collection.localizedTitle, count: fetchAssets.count)
     }
 }

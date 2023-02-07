@@ -27,7 +27,7 @@ final class PhotoListViewModel {
         let fileValue = resource?.value(forKey: TextCase.PhotoList.fileSize.rawValue) as? UInt64
         let fileSize = String(format: "%.1f", Double(fileValue ?? 0) / (1024.0*1024.0))+" MB"
         
-        data = PhotoListDataModel(photo: photo.convertImage(), title: fileName, size: fileSize)
+        data = PhotoListDataModel(photo: photo, title: fileName, size: fileSize)
         return data
     }
 }

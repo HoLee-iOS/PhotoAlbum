@@ -53,7 +53,7 @@ final class AlbumListTableViewCell: BaseTableViewCell {
     }
     
     func bindData(_ data:AlbumListDataModel?) {
-        thumbnailView.image = data?.count == TextCase.AlbumList.empty.rawValue ? UIImage(systemName: Images.AlbumList.empty.rawValue) : data?.thumbnail
+        data?.count == TextCase.AlbumList.empty.rawValue ? (thumbnailView.image = UIImage(systemName: Images.AlbumList.empty.rawValue)) : (data?.thumbnail?.convertImage { [weak self] (image) in self?.thumbnailView.image = image})
         titleLabel.text = data?.title
         countLabel.text = data?.count
     }

@@ -28,7 +28,9 @@ final class PhotoListCollectionViewCell: BaseCollectionViewCell {
     }
     
     func bindData(_ data:PhotoListDataModel?) {
-        photoImage.image = data?.photo
+        data?.photo?.convertImage { [weak self] (image) in
+            self?.photoImage.image = image
+        }
     }
 }
 
