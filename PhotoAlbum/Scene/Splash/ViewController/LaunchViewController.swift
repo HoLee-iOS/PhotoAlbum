@@ -6,27 +6,19 @@
 //
 
 import UIKit
-import Photos
 
 final class LaunchViewController: BaseViewController {
     
-    private let launchIcon = PhotoImageView(name: Images.Splash.icon.rawValue, type: .album)
-    
-    private let accessLevel: PHAccessLevel = .addOnly
+    private let launchIcon = UIImageView(image: UIImage(named: Images.Splash.icon.rawValue))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        requestAuthorization(accessLevel)
-    }
-    
-    
-    private func requestAuthorization(_ accessLevel:PHAccessLevel) {
-        PHPhotoLibrary.requestAuthorization(for: accessLevel) { [weak self] authorizationStatus in
-            switch authorizationStatus {
-            case .authorized: self?.transition(AlbumListViewController(), transitionStyle: .present)
-            default: self?.requestAuthorization(accessLevel)
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let sceneDelegate = windowScene?.delegate as? SceneDelegate
+            let nav = UINavigationController(rootViewController: AlbumListViewController())
+            sceneDelegate?.window?.rootViewController = nav
         }
     }
     
@@ -36,7 +28,8 @@ final class LaunchViewController: BaseViewController {
     
     override func setConstraints() {
         launchIcon.snp.makeConstraints {
-            $0.size.equalTo(70)
+            $0.height.equalTo(view.safeAreaLayoutGuide).multipliedBy(0.3)
+            $0.width.equalTo(launchIcon.snp.height)
             $0.center.equalTo(view.safeAreaLayoutGuide)
         }
     }
