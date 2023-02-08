@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 
+//MARK: - CollectionViewCell 코드의 가독성과 중복을 줄이기 위한 SubClass
 class BaseCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {

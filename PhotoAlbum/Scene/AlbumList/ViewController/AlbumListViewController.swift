@@ -29,7 +29,7 @@ final class AlbumListViewController: BaseViewController, PHPhotoLibraryChangeObs
         
         //MARK: - 권한 거부 했을 경우 권한 변경을 유도하는 Alert Present
         if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .denied {
-            showAlert(type: .two, title: TextCase.Authorization.title.rawValue, message: TextCase.Authorization.message.rawValue, response: TextCase.Authorization.response.rawValue) {
+            showAlert(type: .OKnCancel, title: TextCase.Authorization.title.rawValue, message: TextCase.Authorization.message.rawValue, response: TextCase.Authorization.response.rawValue) {
                 if let appSetting = URL(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(appSetting)
                 }

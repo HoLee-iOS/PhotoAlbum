@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: - Label를 좀 더 적은 코드로 생성하기 위한 SubClass
 final class AlbumListLabel: UILabel {
     
     override init(frame: CGRect) {

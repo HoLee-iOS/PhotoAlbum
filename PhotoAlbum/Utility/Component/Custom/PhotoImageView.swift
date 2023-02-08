@@ -7,6 +7,13 @@
 
 import UIKit
 
+//MARK: - 어떤 이미지를 나타낼 것인지에 따라 Case 분류
+enum ImageViewType {
+    case photo
+    case album
+}
+
+//MARK: - ImageView를 좀 더 적은 코드로 생성하기 위한 SubClass
 final class PhotoImageView: UIImageView {
     
     override init(frame: CGRect) {
@@ -22,7 +29,7 @@ final class PhotoImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(name:String?, color:UIColor?,  type:ImageViewType) {
+    func configure(name:String?, color:UIColor?, type:ImageViewType) {
         image = UIImage(systemName: name ?? "")
         tintColor = color
         switch type {
