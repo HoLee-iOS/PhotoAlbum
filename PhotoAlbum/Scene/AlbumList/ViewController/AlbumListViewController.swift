@@ -17,7 +17,7 @@ final class AlbumListViewController: BaseViewController, PHPhotoLibraryChangeObs
     private lazy var tableView: UITableView = {
         let view = UITableView()
         view.rowHeight = 85
-        view.separatorColor = Colors.white.color
+        view.separatorStyle = .none
         view.dataSource = self
         view.delegate = self
         view.register(AlbumListTableViewCell.self, forCellReuseIdentifier: AlbumListTableViewCell.reuseIdentifier)
