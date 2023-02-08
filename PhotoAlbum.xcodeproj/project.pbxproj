@@ -33,6 +33,7 @@
 		C159E9542990E5A300D777C3 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = C159E9532990E5A300D777C3 /* Section.swift */; };
 		C159E9582990F0E600D777C3 /* PHAsset+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C159E9572990F0E600D777C3 /* PHAsset+.swift */; };
 		C1A8896729916C48001D986D /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A8896629916C48001D986D /* LaunchViewController.swift */; };
+		C1AA18822993C4C4004EFCA7 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AA18812993C4C4004EFCA7 /* UIColor+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		C159E9532990E5A300D777C3 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		C159E9572990F0E600D777C3 /* PHAsset+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+.swift"; sourceTree = "<group>"; };
 		C1A8896629916C48001D986D /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		C1AA18812993C4C4004EFCA7 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				C113281D29910ABE0069FFA4 /* UIViewController+.swift */,
+				C1AA18812993C4C4004EFCA7 /* UIColor+.swift */,
 				C159E9572990F0E600D777C3 /* PHAsset+.swift */,
 			);
 			path = Extension;
@@ -435,6 +438,7 @@
 				C159E9472990C03600D777C3 /* AlbumListLabel.swift in Sources */,
 				C113282429910F1C0069FFA4 /* BaseCollectionViewCell.swift in Sources */,
 				C113281E29910ABE0069FFA4 /* UIViewController+.swift in Sources */,
+				C1AA18822993C4C4004EFCA7 /* UIColor+.swift in Sources */,
 				C159E90D298F827200D777C3 /* SceneDelegate.swift in Sources */,
 				C159E9582990F0E600D777C3 /* PHAsset+.swift in Sources */,
 				C159E92D298FF35500D777C3 /* AlbumListTableViewCell.swift in Sources */,
