@@ -13,10 +13,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        //MARK: - 네비게이션 아이템 색상 설정
-        UINavigationBar.appearance().tintColor = Colors.black.color
+        //네비게이션 아이템 색상 설정
+        UINavigationBar.appearance().tintColor = UIColor(Colors.black)
         
-        //MARK: - 초기화면 설정
+        //초기화면 설정
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
         window?.rootViewController = LaunchViewController()
@@ -31,15 +31,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        //MARK: - 권한 설정 변경 없이 화면으로 돌아갔을때 권한 확인 후 다시 Alert Present
+        //권한 설정 변경 없이 화면으로 돌아갔을때 권한 확인 후 다시 Alert Present
         if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .denied {
-            let requestAlert = UIAlertController(title: TextCase.Authorization.title.rawValue, message: TextCase.Authorization.message.rawValue, preferredStyle: .alert)
-            let goSetting = UIAlertAction(title: TextCase.Authorization.response.rawValue, style: .default) { _ in
+            let requestAlert = UIAlertController(title: TextCase.Authorization.title, message: TextCase.Authorization.message, preferredStyle: .alert)
+            let goSetting = UIAlertAction(title: TextCase.Authorization.response, style: .default) { _ in
                 if let appSetting = URL(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(appSetting)
                 }
             }
-            let cancel = UIAlertAction(title: TextCase.Authorization.quit.rawValue, style: .destructive) { _ in
+            let cancel = UIAlertAction(title: TextCase.Authorization.quit, style: .destructive) { _ in
                 UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
                 DispatchQueue.main.async {
                     exit(0)

@@ -9,15 +9,15 @@ import UIKit
 
 final class AlbumListTableViewCell: BaseTableViewCell {
     
-    private let thumbnailView = PhotoImageView(color: Colors.gray.color, type: .photo)
+    private let thumbnailView = PhotoImageView(color: Colors.gray, type: .photo)
     
     private let titleLabel = AlbumListLabel(size: 17)
     
     private let countLabel = AlbumListLabel(size: 12)
     
-    private let nextPage = PhotoImageView(name: Images.AlbumList.arrow.rawValue, color: Colors.black.color, type: .album)
+    private let nextPage = PhotoImageView(name: Images.AlbumList.arrow, color: Colors.black, type: .album)
     
-    //MARK: - 재사용 에러를 방지하기 위한 초기값 설정
+    //재사용 에러를 방지하기 위한 초기값 설정
     override func prepareForReuse() {
         super.prepareForReuse()
         thumbnailView.image = nil
@@ -53,7 +53,7 @@ final class AlbumListTableViewCell: BaseTableViewCell {
     }
     
     func bindData(_ data:AlbumListDataModel?) {
-        data?.count == TextCase.AlbumList.empty.rawValue ? (thumbnailView.image = UIImage(systemName: Images.AlbumList.empty.rawValue)) : (data?.thumbnail?.convertImage { [weak self] (image) in self?.thumbnailView.image = image})
+        data?.count == TextCase.AlbumList.empty ? (thumbnailView.image = UIImage(systemName: Images.AlbumList.empty)) : (data?.thumbnail?.convertImage { [weak self] (image) in self?.thumbnailView.image = image})
         titleLabel.text = data?.title
         countLabel.text = data?.count
     }

@@ -27,20 +27,20 @@ final class AlbumListViewController: BaseViewController, PHPhotoLibraryChangeObs
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //MARK: - 권한 거부 했을 경우 권한 변경을 유도하는 Alert Present
+        //권한 거부 했을 경우 권한 변경을 유도하는 Alert Present
         if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .denied {
-            showAlert(type: .OKnCancel, title: TextCase.Authorization.title.rawValue, message: TextCase.Authorization.message.rawValue, response: TextCase.Authorization.response.rawValue) {
+            showAlert(type: .oKnCancel, title: TextCase.Authorization.title, message: TextCase.Authorization.message, response: TextCase.Authorization.response) {
                 if let appSetting = URL(string: UIApplication.openSettingsURLString) {
                     UIApplication.shared.open(appSetting)
                 }
             }
         }
         
-        //MARK: - 변경사항 감지하는 Observer에 화면 등록
+        //변경사항 감지하는 Observer에 화면 등록
         PHPhotoLibrary.shared().register(self)
     }
     
-    //MARK: - 변경사항 발생 시에 실행
+    //변경사항 발생 시에 실행
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         viewModel = AlbumListViewModel()
         DispatchQueue.main.async { [weak self] in
@@ -49,14 +49,14 @@ final class AlbumListViewController: BaseViewController, PHPhotoLibraryChangeObs
     }
     
     @objc func addPhotos() {
-        PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited ? PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self) : showAlert(title: TextCase.AddAlert.title.rawValue, message: TextCase.AddAlert.message.rawValue, response: TextCase.AddAlert.response.rawValue)
+        PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited ? PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self) : showAlert(title: TextCase.AddAlert.title, message: TextCase.AddAlert.message, response: TextCase.AddAlert.response)
     }
     
     override func configure() {
-        navigationItem.title = TextCase.AlbumList.navigationTitle.rawValue
+        navigationItem.title = TextCase.AlbumList.navigationTitle
         let backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: nil)
         navigationItem.backBarButtonItem = backBarButtonItem
-        let addButtonItem = UIBarButtonItem(image: UIImage(systemName: Images.AlbumList.add.rawValue), style: .plain, target: self, action: #selector(addPhotos))
+        let addButtonItem = UIBarButtonItem(image: UIImage(systemName: Images.AlbumList.add), style: .plain, target: self, action: #selector(addPhotos))
         navigationItem.rightBarButtonItem = addButtonItem
         view.addSubview(tableView)
     }
@@ -70,11 +70,11 @@ final class AlbumListViewController: BaseViewController, PHPhotoLibraryChangeObs
 
 extension AlbumListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited ? 1 : Section.allCases.count
+        PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited ? 1 : AlbumListSection.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch Section(rawValue: section) {
+        switch AlbumListSection(rawValue: section) {
         case .smartAlbums: return viewModel.smartAlbums.count
         case .userAlbums: return viewModel.userAlbums.count
         default: return 0
@@ -85,7 +85,7 @@ extension AlbumListViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: AlbumListTableViewCell.reuseIdentifier, for: indexPath) as? AlbumListTableViewCell
         guard let cell = cell else { return UITableViewCell() }
         
-        switch Section(rawValue: indexPath.section) {
+        switch AlbumListSection(rawValue: indexPath.section) {
         case .smartAlbums: viewModel.configure(type: .smartAlbums, indexPath: indexPath.row)
         case .userAlbums: viewModel.configure(type: .userAlbums, indexPath: indexPath.row)
         default: break
@@ -97,7 +97,7 @@ extension AlbumListViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Section(rawValue: section)?.header
+        return AlbumListSection(rawValue: section)?.header
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

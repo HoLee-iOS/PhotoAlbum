@@ -22,22 +22,22 @@ final class PhotoListViewController: BaseViewController, PHPhotoLibraryChangeObs
         return view
     }()
     
-    private let emptyLabel = AlbumListLabel(size: 20, width: .semibold, content: TextCase.PhotoList.empty.rawValue)
+    private let emptyLabel = AlbumListLabel(size: 20, width: .semibold, content: TextCase.PhotoList.empty)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         isEmptyAlbum()
-        //MARK: - 변경사항 감지하는 Observer에 화면 등록
+        //변경사항 감지하는 Observer에 화면 등록
         PHPhotoLibrary.shared().register(self)
     }
     
-    //MARK: - 사진 개수가 없을 경우 emptyLabel 표시
+    //사진 개수가 없을 경우 emptyLabel 표시
     func isEmptyAlbum() {
         viewModel.photos.count == 0 ? (collectionView.isHidden = true) : (emptyLabel.isHidden = true)
     }
     
-    //MARK: - 변경사항 발생 시에 실행
+    //변경사항 발생 시에 실행
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         viewModel = PhotoListViewModel(album)
         DispatchQueue.main.async { [weak self] in
@@ -60,7 +60,7 @@ final class PhotoListViewController: BaseViewController, PHPhotoLibraryChangeObs
         }
     }
     
-    //MARK: - compositionalLayout 설정
+    //compositionalLayout 설정
     private func createLayout() -> UICollectionViewLayout {
         
         return UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
@@ -98,6 +98,6 @@ extension PhotoListViewController: UICollectionViewDataSource, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let data = viewModel.configure(indexPath.item) else { return }
-        showAlert(title: TextCase.DetailAlert.title.rawValue, message: TextCase.DetailAlert.fileName.rawValue + data.title + TextCase.DetailAlert.fileSize.rawValue + data.size, response: TextCase.DetailAlert.response.rawValue)
+        showAlert(title: TextCase.DetailAlert.title, message: TextCase.DetailAlert.fileName + data.title + TextCase.DetailAlert.fileSize + data.size, response: TextCase.DetailAlert.response)
     }
 }

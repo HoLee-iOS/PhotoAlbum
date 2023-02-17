@@ -7,15 +7,14 @@
 
 import UIKit
 
-//MARK: - Label를 좀 더 적은 코드로 생성하기 위한 SubClass
+/// Label를 좀 더 적은 코드로 생성하기 위한 SubClass
+/// ```
+/// let label = AlbumListLabel(size: 15, width: .semibold, content: "원하는 내용")
+/// ```
 final class AlbumListLabel: UILabel {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    convenience init(size: CGFloat, width: UIFont.Weight = .regular, content: String = "") {
-        self.init(frame: .zero)
+    init(size: CGFloat, width: UIFont.Weight = .regular, content: String = "") {
+        super.init(frame: .zero)
         configure(size: size, width: width, content: content)
     }
     
@@ -25,7 +24,7 @@ final class AlbumListLabel: UILabel {
     
     func configure(size: CGFloat, width: UIFont.Weight, content: String) {
         text = content
-        textColor = Colors.black.color
+        textColor = UIColor(Colors.black) 
         font = .systemFont(ofSize: size, weight: width)
     }
 }

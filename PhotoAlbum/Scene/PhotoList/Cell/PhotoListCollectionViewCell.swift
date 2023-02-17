@@ -11,7 +11,7 @@ final class PhotoListCollectionViewCell: BaseCollectionViewCell {
     
     private let photoImage = PhotoImageView(type: .photo)
     
-    //MARK: - 재사용 에러를 방지하기 위한 초기값 설정
+    //재사용 에러를 방지하기 위한 초기값 설정
     override func prepareForReuse() {
         super.prepareForReuse()
         photoImage.image = nil

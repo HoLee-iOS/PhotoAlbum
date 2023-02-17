@@ -7,15 +7,18 @@
 
 import Foundation
 
+/// 전체 이미지
 enum Images {
     
-    enum Splash: String {
-        case icon = "AppIcon"
+    /// 런치스크린에 들어가는 이미지
+    enum Splash {
+        static let icon = "AppIcon"
     }
     
-    enum AlbumList: String {
-        case arrow = "chevron.right"
-        case empty = "photo.on.rectangle.angled"
-        case add = "plus"
+    /// 앨범리스트 화면에 들어가는 이미지
+    enum AlbumList {
+        static let arrow = "chevron.right"
+        static let empty = "photo.on.rectangle.angled"
+        static let add = "plus"
     }
 }

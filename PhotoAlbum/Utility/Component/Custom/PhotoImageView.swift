@@ -7,21 +7,14 @@
 
 import UIKit
 
-//MARK: - 어떤 이미지를 나타낼 것인지에 따라 Case 분류
-enum ImageViewType {
-    case photo
-    case album
-}
-
-//MARK: - ImageView를 좀 더 적은 코드로 생성하기 위한 SubClass
+/// ImageView를 좀 더 적은 코드로 생성하기 위한 SubClass
+/// ```
+/// let imageView = PhotoImageView(name: "plus", color: "#000000", type: .album)
+/// ```
 final class PhotoImageView: UIImageView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    convenience init(name:String? = nil, color:UIColor? = nil, type:ImageViewType) {
-        self.init(frame: .zero)
+    init(name: String? = nil, color: String? = nil, type: ImageViewType) {
+        super.init(frame: .zero)
         configure(name: name, color: color, type: type)
     }
     
@@ -29,12 +22,20 @@ final class PhotoImageView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(name:String?, color:UIColor?, type:ImageViewType) {
+    func configure(name: String?, color: String?, type: ImageViewType) {
         image = UIImage(systemName: name ?? "")
-        tintColor = color
+        if let color = color { tintColor = UIColor(color) }
         switch type {
         case .photo: contentMode = .scaleToFill
         case .album: contentMode = .scaleAspectFit
         }
+    }
+}
+
+extension PhotoImageView {
+    /// 어떤 이미지를 나타낼 것인지에 따라 Case 분류
+    enum ImageViewType {
+        case photo
+        case album
     }
 }

@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum Section: Int, CaseIterable {
+/// 앨범리스트 화면에서 스마트앨범과 사용자앨범 섹션을 나눠주는 enum
+enum AlbumListSection: Int, CaseIterable {
     case smartAlbums
     case userAlbums
     

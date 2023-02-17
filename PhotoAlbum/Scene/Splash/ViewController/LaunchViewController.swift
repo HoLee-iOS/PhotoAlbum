@@ -9,7 +9,7 @@ import UIKit
 
 final class LaunchViewController: BaseViewController {
     
-    private let launchIcon = UIImageView(image: UIImage(named: Images.Splash.icon.rawValue))
+    private let launchIcon = UIImageView(image: UIImage(named: Images.Splash.icon))
     
     override func viewDidLoad() {
         super.viewDidLoad()
