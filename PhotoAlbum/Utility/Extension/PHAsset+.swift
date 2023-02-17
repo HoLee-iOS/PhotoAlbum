@@ -10,7 +10,12 @@ import Photos
 
 extension PHAsset {
     
-    //MARK: - PHAsset을 UIImage로 변환
+    /// PHAsset을 UIImage로 변환
+    /// ```
+    /// PHAsset().convertImage { [weak self] (image) in
+    ///     imageView.image = image
+    /// }
+    /// ```
     func convertImage(completion: ((UIImage?)->())?) {
         PHImageManager().requestImage(for: self,
                                       targetSize: CGSize(width: self.pixelWidth, height: self.pixelHeight),

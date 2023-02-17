@@ -9,6 +9,10 @@ import UIKit
 
 extension UIColor {
     
+    /// hexCode를 통한 UIColor 값 추출
+    /// ```
+    /// view.backgroundColor = UIColor("#FFFFFF")
+    /// ```
     convenience init(_ hex: String, alpha: CGFloat = 1.0) {
         var hexFormatted: String = hex.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         

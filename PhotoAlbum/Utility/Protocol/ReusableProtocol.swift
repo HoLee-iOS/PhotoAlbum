@@ -7,7 +7,7 @@
 
 import UIKit
 
-//MARK: - reuseIdentifier
+/// reuseIdentifier
 protocol ReusableViewProtocol: AnyObject {
     static var reuseIdentifier: String { get }
 }
